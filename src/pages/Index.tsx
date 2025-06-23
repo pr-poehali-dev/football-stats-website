@@ -10,41 +10,31 @@ const Index = () => {
   const featuredTeams = teams.slice(0, 2);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+    <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <header className="bg-gradient-to-r from-green-600 via-emerald-600 to-green-700 shadow-2xl">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <h1 className="text-4xl font-black text-white tracking-tight">
-            ⚽ ФУТБОЛЬНАЯ СТАТИСТИКА
+      <header className="bg-white border-b border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          <h1 className="text-3xl font-bold text-gray-900">
+            Футбольная статистика
           </h1>
-          <p className="text-green-100 mt-3 text-lg font-medium">
-            🏆 Турнирные таблицы и статистика лучших игроков
+          <p className="text-gray-600 mt-2">
+            Турнирные таблицы и статистика лучших игроков
           </p>
         </div>
       </header>
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <Tabs defaultValue="tournament" className="space-y-8">
-          <TabsList className="grid w-full max-w-md grid-cols-2 bg-slate-800 border-green-500/20">
-            <TabsTrigger
-              value="tournament"
-              className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-green-500 data-[state=active]:to-emerald-500 data-[state=active]:text-white font-bold"
-            >
-              📊 СТАТИСТИКА ТУРНИРА
-            </TabsTrigger>
-            <TabsTrigger
-              value="players"
-              className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-cyan-500 data-[state=active]:text-white font-bold"
-            >
-              ⭐ СТАТИСТИКА ИГРОКОВ
-            </TabsTrigger>
+        <Tabs defaultValue="tournament" className="space-y-6">
+          <TabsList className="grid w-full max-w-md grid-cols-2">
+            <TabsTrigger value="tournament">Статистика турнира</TabsTrigger>
+            <TabsTrigger value="players">Статистика игроков</TabsTrigger>
           </TabsList>
 
           <TabsContent value="tournament" className="space-y-8">
             {/* Featured Teams Section */}
             <section>
-              <h2 className="text-3xl font-black text-white mb-6 bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
-                🏆 ТОП КОМАНДЫ
+              <h2 className="text-2xl font-semibold text-gray-900 mb-6">
+                Топ команды
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {featuredTeams.map((team) => (
@@ -62,8 +52,8 @@ const Index = () => {
           <TabsContent value="players" className="space-y-8">
             {/* Featured Players Section */}
             <section>
-              <h2 className="text-3xl font-black text-white mb-6 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-                ⚡ ЛУЧШИЕ ИГРОКИ
+              <h2 className="text-2xl font-semibold text-gray-900 mb-6">
+                Лучшие игроки
               </h2>
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 {featuredPlayers.map((player) => (
