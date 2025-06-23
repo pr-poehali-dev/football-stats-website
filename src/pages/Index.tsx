@@ -1,3 +1,4 @@
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import TournamentTable from "@/components/TournamentTable";
 import PlayersTable from "@/components/PlayersTable";
 import PlayerCard from "@/components/PlayerCard";
@@ -22,35 +23,51 @@ const Index = () => {
         </div>
       </header>
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
-        {/* Featured Cards */}
-        <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-6">
-            Избранное
-          </h2>
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
-            <div className="lg:col-span-3 space-y-4">
-              {featuredPlayers.map((player) => (
-                <PlayerCard key={player.id} player={player} />
-              ))}
-            </div>
-            <div className="lg:col-span-2 space-y-4">
-              {featuredTeams.map((team) => (
-                <TeamCard key={team.id} team={team} />
-              ))}
-            </div>
-          </div>
-        </section>
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <Tabs defaultValue="tournament" className="space-y-6">
+          <TabsList className="grid w-full max-w-md grid-cols-2">
+            <TabsTrigger value="tournament">Статистика турнира</TabsTrigger>
+            <TabsTrigger value="players">Статистика игроков</TabsTrigger>
+          </TabsList>
 
-        {/* Tournament Table */}
-        <section>
-          <TournamentTable />
-        </section>
+          <TabsContent value="tournament" className="space-y-8">
+            {/* Featured Teams Section */}
+            <section>
+              <h2 className="text-2xl font-semibold text-gray-900 mb-6">
+                Топ команды
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {featuredTeams.map((team) => (
+                  <TeamCard key={team.id} team={team} />
+                ))}
+              </div>
+            </section>
 
-        {/* Players Table */}
-        <section>
-          <PlayersTable />
-        </section>
+            {/* Tournament Table */}
+            <section>
+              <TournamentTable />
+            </section>
+          </TabsContent>
+
+          <TabsContent value="players" className="space-y-8">
+            {/* Featured Players Section */}
+            <section>
+              <h2 className="text-2xl font-semibold text-gray-900 mb-6">
+                Лучшие игроки
+              </h2>
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                {featuredPlayers.map((player) => (
+                  <PlayerCard key={player.id} player={player} />
+                ))}
+              </div>
+            </section>
+
+            {/* Players Table */}
+            <section>
+              <PlayersTable />
+            </section>
+          </TabsContent>
+        </Tabs>
       </main>
     </div>
   );
